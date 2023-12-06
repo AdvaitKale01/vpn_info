@@ -1,5 +1,12 @@
 # vpn_info
 
+| Function                                                                           | Android   | iOS     | macOS   | Web     |
+| -------                                                                            | :-------: | :-----: | :-----: | :-----: |
+| Get VPN State                                                                      | ✅        | ✅      | ✅     | ✅     |
+| Get VPN Protocol Name                                                              | ✅        | ✅      | ✅     | ✅     |
+| Get VPN IP Addresses                                                               | ✅        | ✅      | ✅     | ✅     |
+
+
 [![Pub](https://img.shields.io/pub/v/vpn_info)](https://pub.dev/packages/vpn_info)
 [![License: BSD 2-Clause "Simplified"](https://img.shields.io/badge/License-BSD%202--Clause%20%22Simplified%22-brightgreen.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
