@@ -4,13 +4,8 @@ import 'dart:async';
 import 'dart:io';
 
 class VpnInfo {
-  final _vpnStatusController = StreamController<bool>.broadcast();
-
-  /// Stream to listen for real-time changes in VPN connection status
-  Stream<bool> get vpnStatusStream => _vpnStatusController.stream;
-
   /// Returns true if the device has a VPN connection
-  Future<bool> isVpnConnected() async {
+  static Future<bool> isVpnConnected() async {
     try {
       final networkInterfaces = await NetworkInterface.list(
         includeLoopback: false,
@@ -31,9 +26,6 @@ class VpnInfo {
             .any((pattern) => interface.name.toLowerCase().contains(pattern));
       });
 
-      // Notify listeners about the VPN connection status
-      _vpnStatusController.add(hasVpnConnection);
-
       return hasVpnConnection;
     } catch (e) {
       rethrow;
@@ -41,7 +33,7 @@ class VpnInfo {
   }
 
   /// Returns the name of the connected VPN interface
-  Future<String?> getConnectedVpnInterfaceName() async {
+  static Future<String?> getConnectedVpnName() async {
     try {
       final networkInterfaces = await NetworkInterface.list(
         includeLoopback: false,
@@ -60,6 +52,9 @@ class VpnInfo {
         ];
         for (var pattern in vpnPatterns) {
           if (interface.name.toLowerCase().contains(pattern)) {
+            // print(interface.index);
+            // print(interface.addresses);
+            // print(interface.name);
             return interface.name;
           }
         }
@@ -72,8 +67,37 @@ class VpnInfo {
     }
   }
 
-  /// Dispose of the stream controller when it's no longer needed
-  void dispose() {
-    _vpnStatusController.close();
+  static Future<List<InternetAddress>?> getConnectedVpnAddresses() async {
+    try {
+      final networkInterfaces = await NetworkInterface.list(
+        includeLoopback: false,
+        type: InternetAddressType.any,
+      );
+
+      for (var interface in networkInterfaces) {
+        final vpnPatterns = [
+          "tun",
+          "tap",
+          "ppp",
+          "pptp",
+          "l2tp",
+          "ipsec",
+          "vpn"
+        ];
+        for (var pattern in vpnPatterns) {
+          if (interface.name.toLowerCase().contains(pattern)) {
+            // print(interface.index);
+            // print(interface.addresses);
+            // print(interface.name);
+            return interface.addresses;
+          }
+        }
+      }
+
+      // Return null if no VPN connection is found
+      return null;
+    } catch (e) {
+      rethrow;
+    }
   }
 }

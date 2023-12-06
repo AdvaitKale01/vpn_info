@@ -1,6 +1,6 @@
 name: vpn_info
 description: "A Flutter package which provides connected vpn information."
-version: 0.0.1
+version: 0.0.3
 homepage: https://github.com/AdvaitKale01/vpn_info
 
 environment:
