@@ -1,39 +1,56 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# vpn_info
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+[![Pub](https://img.shields.io/pub/v/vpn_info)](https://pub.dev/packages/vpn_info)
+[![License: <License>](https://img.shields.io/badge/License-<License>-brightgreen.svg)](https://opensource.org/licenses/<License>)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+A Flutter package that provides utilities for checking VPN connection status and obtaining details about the connected VPN.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+> Note: This package is in active development. Feel free to use it, and contributions are welcome.
 
-## Features
+## Table of Contents
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Functions](#functions)
+- [Example](#example)
+- [Issues](#issues)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Paste this in terminal:
+```
+
+flutter pub add vpn_info
+
+```
+
+This will add `vpn_info` to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  vpn_info: ^1.0.
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+Import the package:
 ```dart
-const like = 'sample';
+
+import 'package:vpn_info/vpn_info.dart';
+
 ```
 
-## Additional information
+## Functions
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+`Future<bool> isVpnConnected()`
+Check if the device has an active VPN connection.
+
+```dart
+
+bool vpnConnected = await VpnInfo.isVpnConnected();
+
+```
+`Future<String?> getConnectedVpnInterfaceName()`
+Get the name of the connected VPN interface.
