@@ -31,9 +31,7 @@ dependencies:
 Run the following command to install the package:
 
 ```
-
 $ flutter pub get
-
 ```
 
 ## Usage
@@ -84,6 +82,17 @@ StreamSubscription<bool> subscription = VpnInfo.vpnConnectionStream().listen((vp
 // subscription.cancel();
 
 ```
+
+### `void dispose()`
+
+Dispose of resources associated with the `vpnConnectionStream`. Call this when the subscription is no longer needed to avoid memory leaks.
+
+```dart
+
+subscription.dispose();
+
+```
+
 ## Example
 
 ```dart
