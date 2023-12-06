@@ -58,13 +58,13 @@ bool vpnConnected = await VpnInfo.isVpnConnected();
 
 ```
 
-### `Future<String?> getConnectedVpnName()`
+### `Future<String?> getConnectedVpnProtocolName()`
 
 Get the name of the connected VPN interface.
 
 ```dart
 
-String? vpnInterfaceName = await VpnInfo.getConnectedVpnName();
+String? vpnInterfaceName = await VpnInfo.getConnectedVpnProtocolName();
 
 // Perform a null check later in code
 
@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const Text('VPN name:'),
                 const SizedBox(width: 10.0),
                 FutureBuilder(
-                  future: VpnInfo.getConnectedVpnName(),
+                  future: VpnInfo.getConnectedVpnProtocolName(),
                   builder: (context, AsyncSnapshot<String?> snapshot) {
                     if (snapshot.hasData) {
                       return Text(

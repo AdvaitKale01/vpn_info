@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const Text('VPN name:'),
                 const SizedBox(width: 10.0),
                 FutureBuilder(
-                  future: VpnInfo.getConnectedVpnName(),
+                  future: VpnInfo.getConnectedVpnProtocolName(),
                   builder: (context, AsyncSnapshot<String?> snapshot) {
                     if (snapshot.hasData) {
                       return Text(

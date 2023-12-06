@@ -33,7 +33,7 @@ class VpnInfo {
   }
 
   /// Returns the name of the connected VPN interface
-  static Future<String?> getConnectedVpnName() async {
+  static Future<String?> getConnectedVpnProtocolName() async {
     try {
       final networkInterfaces = await NetworkInterface.list(
         includeLoopback: false,
